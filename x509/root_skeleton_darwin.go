@@ -7,5 +7,5 @@ func (c *Certificate) systemVerify(opts *VerifyOptions) (chains [][]*Certificate
 }
 
 func loadSystemRoots() (*CertPool, error) {
-	return NewCertPool()
+	return NewCertPool(), nil
 }
