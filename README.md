@@ -26,7 +26,7 @@ Option B: Using Go build commands with Go modules (works on any platform with Ba
 1. Run the following in the `x509-compressed` directory to set up Go modules:
    
    ~~~
-   go mod init
+   go mod init github.com/namecoin/x509-compressed
    go mod tidy
    go generate ./...
    go mod tidy
