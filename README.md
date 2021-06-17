@@ -19,7 +19,7 @@ Option A: Using Go build commands without Go modules (works on any platform with
 
 3. Run `go generate github.com/namecoin/x509-compressed/...`.  Some source code will be generated.
 
-4. You can now `import "github.com/x509-compressed/x509"` from your Go projects.
+4. You can now `import "github.com/namecoin/x509-compressed/x509"` from your Go projects.
 
 Option B: Using Go build commands with Go modules (works on any platform with Bash; Go 1.15+:
 
@@ -41,7 +41,7 @@ Option B: Using Go build commands with Go modules (works on any platform with Ba
    go mod tidy
    ~~~
 
-4. You can now `import "github.com/x509-compressed/x509"` from your Go application.
+4. You can now `import "github.com/namecoin/x509-compressed/x509"` from your Go application.
 
 ## Licence
 
