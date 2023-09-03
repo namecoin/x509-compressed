@@ -4,11 +4,13 @@ x509-compressed is a fork of the Go standard `crypto/x509` library that uses com
 
 ## Building
 
-Prerequisites:
+### Prerequisites
 
-1. Ensure you have the Go tools installed.
+Ensure you have the Go tools installed.
 
-Option A: Using Go build commands without Go modules (works on any platform with Bash; only Go 1.15-1.16.x; will not work on Go 1.17+):
+### Option A: Using Go build commands without Go modules
+
+Should work on any platform with Bash; only Go 1.15-1.16.x; will not work on Go 1.17+:
 
 1. Ensure you have the GOPATH environment variable set. (For those not
    familar with Go, setting it to the path to an empty directory will suffice.
@@ -21,29 +23,39 @@ Option A: Using Go build commands without Go modules (works on any platform with
 
 4. You can now `import "github.com/namecoin/x509-compressed/x509"` from your Go projects.
 
-Option B: Using Go build commands with Go modules (works on any platform with Bash; Go 1.15+:
+### Option B: Using Go build commands with Go modules
 
-1. Run the following in the `x509-compressed` directory to set up Go modules:
+Should work on any platform with Bash; Go 1.15+:
+
+1. Run the following in the `x509-compressed/godebug` directory to initialize the stub substitute for the `internal/godebug`  module:
+
+   ~~~
+   go mod init github.com/namecoin/x509-compressed/godebug
+   go mod tidy
+   cd ..
+
+2. Run the following in the `x509-compressed` directory to set up Go modules:
    
    ~~~
    go mod init github.com/namecoin/x509-compressed
+   go mod edit -replace github.com/namecoin/x509-compressed/godebug=./godebug
    go mod tidy
    go generate ./...
    go mod tidy
    ~~~
 
-2. Place your application's directory as a sibling of the `x509-compressed` directory.
+3. Place your application's directory as a sibling of the `x509-compressed` directory.
 
-3. Run the following in your application's directory:
+4. Run the following in your application's directory:
    
    ~~~
-   go mod edit -replace github.com/namecoin/x509-compressed=../x509-compressed
+   go mod edit -replace github.com/namecoin/x509-compressed=../x509-compressed -replace github.com/namecoin/x509-compressed/godebug=../x509-compressed/godebug
    go mod tidy
    ~~~
 
-4. You can now `import "github.com/namecoin/x509-compressed/x509"` from your Go application.
+5. You can now `import "github.com/namecoin/x509-compressed/x509"` from your Go application.
 
-## Licence
+## License
 
 Original Go standard library code Copyright (c) 2009 The Go Authors. All rights reserved.
 
